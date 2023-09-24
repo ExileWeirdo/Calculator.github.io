@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition:color .3s, background .3s;
+}
+
+body{
+    background:hsl(222 26% 31%);
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-width: 100vw;
+    font-family: 'League Spartan', sans-serif;
+}
+
+.calculator{
+    width: min(580px, 100% - 50px);
+    color: #fff;
+    
+    &.theme-1 {
+    --keypad-and-toggle:hsl(223 31% 20%);
+    --display:hsl(224 36% 15%);
+    --btn-blue:hsl(225 21% 49%);
+    --btn-blue-shadow:hsl(224 28% 35%);
+    --btn-red:hsl(6 63% 50%);
+    --btn-red-shadow:hsl(6 70% 34%);
+    --btn-default:hsl(30 25% 89%);
+    --btn-default-shadow:hsl(28 16% 65%);
+    --numbers:hsl(221 14% 31%);
+    --title:hsl(0 0% 100%);
+    --equals: hsl(0 0% 100%);
+    }
+
+    &.theme-2 {
+    --keypad-and-toggle:hsl(0 5% 81%);
+    --display:hsl(0 0% 93%);
+    --btn-blue:hsl(185 42% 37%);
+    --btn-blue-shadow:hsl(185 58% 25%);
+    --btn-red:hsl(25 98% 40%);
+    --btn-red-shadow:hsl(25 99% 27%);
+    --btn-default:hsl(45 7% 89%);
+    --btn-default-shadow:hsl(35 11% 61%);
+    --numbers:hsl(60 10% 19%);
+    --title:hsl(0 0% 0%);
+    --equals: hsl(0 0% 0%);
+    }
+
+    &.theme-3 {
+        --keypad-and-toggle:hsl(268, 71%, 12%);
+        --display:hsl(268 71% 12%);
+        --btn-blue:hsl(281 89% 26%);
+        --btn-blue-shadow:hsl(285 91% 52%);
+        --btn-red:hsl(176 100% 44%);
+        --btn-red-shadow:hsl(177 92% 70%);
+        --btn-default:hsl(268 47% 21%);
+        --btn-default-shadow:hsl(290 70% 36%);
+        --numbers:hsl(52 100% 62%);
+        --title:hsl(52 100% 62%);
+        --equals: hsl(0 0% 100%);
+    }
+}
+
+.topRow{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.slidebarText{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    color: var(--title)
+}
+
+.themeAndSlidebar{
+    display: flex;
+    gap: 30px;
+    align-items: flex-end;
+    
+}
+
+.calcText{
+    font-size: 2rem;
+    font-weight: 700;
+    padding-bottom: 5px;
+    color: var(--title);
+}
+
+.themeText{
+    font-size: 16px;
+    padding-bottom: 5px;
+    color: var(--title);
+}
+
+.slidebar input {
+    height: 20px;
+    width: 20px;
+    appearance: none;
+    background-color: var(--btn-red);
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.slidebar input:hover {
+    cursor: pointer;
+}
+
+.slidebar{
+    display: flex;
+    justify-content: center;
+    padding: 0.2em;
+    border-radius: 50px;
+    background: var(--keypad-and-toggle)
+}
+
+#one {
+    opacity: 1;
+}
+
+.input{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: var(--title);
+    background: var(--display);
+    min-height: 80px;
+    margin-top: 1.8rem;
+    padding: 1em;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.display{
+    text-align: end;
+    width: 100%;
+    background: var(--display);
+    color: var(--title);
+    outline: none;
+    border: none;
+    cursor: default;
+    font-size: 2rem;
+}
+
+.containerButtons button{
+    font-size: clamp(1rem, 0.7573rem + 1.0356vw, 2rem);
+    padding-block: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.containerButtons button:active {
+    transform: translateY(1px);
+}
+
+
+.number{
+    background: var(--btn-default);
+    box-shadow: 0 5px var(--btn-default-shadow);
+    color: var(--numbers);
+}
+
+.delAndReset{
+    background: var(--btn-blue);
+    box-shadow: 0 5px var(--btn-blue-shadow);
+    color: #fff;
+    font-size: 20px;
+}
+
+.equals{
+    background: var(--btn-red);
+    box-shadow: 0 5px var(--btn-red-shadow);
+    color: var(--equals);
+}
+
+.containerButtons{
+    display: grid;
+    padding: 1em;
+    margin-top: 1rem;
+    background: var(--keypad-and-toggle);
+    border-radius: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.reset{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.equals{
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+
+@media only screen and (max-width: 600px){
+    body{
+        justify-content: flex-start;
+    }
+
+   .input{
+    margin-top: 0.7rem;
+    max-height: 100px;
+    padding: 0.5rem;
+   }
+
+   .input h1{
+    display: inline-block;
+    text-align: center;
+   }
+}
